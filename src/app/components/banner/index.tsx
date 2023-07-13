@@ -6,6 +6,7 @@ import LogoImage from '../../../assets/logo.png'
 import DarthVader from '../../../assets/darthvader.png'
 import Lightsaber from '../../../assets/lightsaber.gif'
 import { Container, PreLoader, BannerWrapper, ImageTitleWrapper, Subtitle } from './style'
+import Navbar from '../navbar'
 
 export default function Banner() {
     const [preLoader, setPreLoader] = React.useState('flex')
@@ -16,6 +17,7 @@ export default function Banner() {
 
     return (
         <Container>
+            <Navbar />
             <PreLoader style={{ display: preLoader }}>
                 <Image 
                     src={Lightsaber}

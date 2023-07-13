@@ -4,7 +4,7 @@ import Banner from '@/app/components/banner'
 import '../app/globals.css'
 import React from "react"
 import Head from 'next/head'
-import Favicon from '../assets/favicon.ico'
+import Navbar from '@/app/components/navbar'
 
 export default function Home() {
   return (
