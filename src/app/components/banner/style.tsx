@@ -15,6 +15,7 @@ export const PreLoader = styled.div`
     img {
         position: absolute;
         bottom: 0;
+        pointer-events: none;
     }
 
     @keyframes fadeOut {
