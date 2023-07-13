@@ -3,7 +3,7 @@ import '../../../app/globals.css'
 import React from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
-import LogoImage from '../../../assets/logo.webp'
+import LogoImage from '../../../assets/logo.png'
 import DarthVader from '../../../assets/darthvader.png'
 import Lightsaber from '../../../assets/lightsaber.gif'
 
@@ -39,7 +39,6 @@ const PreLoader = styled.div`
 
 const Container = styled.div`
     position: relative;
-    width: 100%;
     height: 100vh;
     overflow: hidden;
 
@@ -52,20 +51,20 @@ const Container = styled.div`
         z-index: 0;
         object-fit: cover;
         opacity: 0.3;
-        z-index: 0;
     }
 `
 
 const BannerWrapper = styled.div`
     display: flex;
-    width: 100%;
     justify-content: center;
     z-index: 9;
+    padding: 10px;
 
     #vader {
         opacity: 0;
         animation: fade-in 4s ease-in-out forwards;
         pointer-events: none;
+        height: 1400px;
 
         @media screen and (max-width: 1440px){
             width: 700px;
@@ -89,19 +88,18 @@ const BannerWrapper = styled.div`
 const ImageTitleWrapper = styled.div`
     display: flex;
     margin-top: 250px;
-    position: relative;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     opacity: 0;
     animation: separate 3s ease-in-out forwards;
     pointer-events: none;
-    max-width: 560px;
+    max-width: 700px;
+    row-gap: 30px;
 
     img {
-        @media screen and (max-width: 1440px){
-            max-width: 400px;
-            height: 250px;
-        }
+        width: 100%;
+        height: auto;
     }
 
     @keyframes separate {
@@ -120,9 +118,9 @@ const Subtitle = styled.h2`
     font-family: 'IBM Plex Mono', monospace;
     font-size: 24px;
     color: #FFE81F;
+    margin-left: 10px;
 
     @media screen and (max-width: 1440px){
-        width: 320px;
         font-size: 20px;
     }
 `
@@ -148,7 +146,6 @@ export default function Banner() {
                 <ImageTitleWrapper>
                     <Image 
                         src={LogoImage}
-                        width={700}
                         alt='logo'
                     />
                     <Subtitle>Darth Vader, born as Anakin Skywalker, is a central character in the Star Wars saga. Initially a heroic Jedi Knight, Anakin succumbs to the dark side of the Force and becomes the iconic Sith Lord known as Darth Vader.</Subtitle>
