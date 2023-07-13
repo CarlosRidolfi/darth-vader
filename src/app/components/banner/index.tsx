@@ -69,6 +69,7 @@ const BannerWrapper = styled.div`
 
         @media screen and (max-width: 1440px){
             width: 700px;
+            height: 1200px;
         }
 
         @keyframes fade-in {
