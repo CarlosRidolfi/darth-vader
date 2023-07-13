@@ -5,11 +5,42 @@ import styled from 'styled-components'
 import Image from 'next/image'
 import LogoImage from '../../../assets/logo.webp'
 import DarthVader from '../../../assets/darthvader.png'
+import Lightsaber from '../../../assets/lightsaber.gif'
+
+const PreLoader = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    animation: fadeOut 2s forwards;
+    z-index: 2;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        position: absolute;
+        bottom: 0;
+    }
+
+    @keyframes fadeOut {
+        0% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+`
 
 const Container = styled.div`
     position: relative;
     width: 100%;
-    height: 100vh; /* Adjust as needed */
+    height: 100vh;
     overflow: hidden;
 
     video {
@@ -18,22 +49,27 @@ const Container = styled.div`
         left: 0;
         width: 100%;
         height: 100%;
+        z-index: 0;
         object-fit: cover;
         opacity: 0.3;
+        z-index: 0;
     }
 `
 
 const BannerWrapper = styled.div`
-    width: 100%;
     display: flex;
+    width: 100%;
+    margin: 0 auto;
     justify-content: center;
-    pointer-events: none;
-    overflow: hidden;
-    padding: 10px;
+    z-index: 9;
 
     #vader {
         opacity: 0;
-        animation: fade-in 2s ease-in-out forwards;
+        animation: fade-in 4s ease-in-out forwards;
+
+        @media screen and (max-width: 1440px){
+            width: 700px;
+        }
 
         @keyframes fade-in {
             0% {
@@ -52,11 +88,18 @@ const BannerWrapper = styled.div`
 const ImageTitleWrapper = styled.div`
     display: flex;
     margin-top: 250px;
+    position: relative;
     align-items: center;
     flex-direction: column;
     row-gap: -10px;
     opacity: 0;
-    animation: separate 1s ease-in-out forwards;
+    animation: separate 3s ease-in-out forwards;
+
+    img {
+        @media screen and (max-width: 1440px){
+            width: 400px;
+        }
+    }
 
     @keyframes separate {
         0% {
@@ -73,13 +116,31 @@ const ImageTitleWrapper = styled.div`
 const Subtitle = styled.h2`
     font-family: 'IBM Plex Mono', monospace;
     font-size: 24px;
-    width: 580px;
+    max-width: 580px;
     color: #FFE81F;
+
+    @media screen and (max-width: 1440px){
+        width: 320px;
+        font-size: 20px;
+    }
 `
 
 export default function Banner() {
+    const [preLoader, setPreLoader] = React.useState('flex')
+
+    setTimeout(() => {
+        setPreLoader('none')
+    }, 3000)
+
     return (
         <Container>
+            <PreLoader style={{ display: preLoader }}>
+                <Image 
+                    src={Lightsaber}
+                    width={900}
+                    alt='preloader'
+                />
+            </PreLoader>
             <video src={"/darthvideo.mp4"} autoPlay muted loop />
             <BannerWrapper>
                 <ImageTitleWrapper>
