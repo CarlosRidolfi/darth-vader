@@ -59,13 +59,13 @@ const Container = styled.div`
 const BannerWrapper = styled.div`
     display: flex;
     width: 100%;
-    margin: 0 auto;
     justify-content: center;
     z-index: 9;
 
     #vader {
         opacity: 0;
         animation: fade-in 4s ease-in-out forwards;
+        pointer-events: none;
 
         @media screen and (max-width: 1440px){
             width: 700px;
@@ -91,13 +91,15 @@ const ImageTitleWrapper = styled.div`
     position: relative;
     align-items: center;
     flex-direction: column;
-    row-gap: -10px;
     opacity: 0;
     animation: separate 3s ease-in-out forwards;
+    pointer-events: none;
+    max-width: 560px;
 
     img {
         @media screen and (max-width: 1440px){
-            width: 400px;
+            max-width: 400px;
+            height: 250px;
         }
     }
 
@@ -116,7 +118,6 @@ const ImageTitleWrapper = styled.div`
 const Subtitle = styled.h2`
     font-family: 'IBM Plex Mono', monospace;
     font-size: 24px;
-    max-width: 580px;
     color: #FFE81F;
 
     @media screen and (max-width: 1440px){
